@@ -1,7 +1,5 @@
-use serde::{Deserialize, Serialize};
 use std::{thread, time};
 
-#[derive(Serialize, Deserialize)]
 struct User {
     first_name: String,
     last_name: String,
@@ -11,13 +9,30 @@ struct User {
     skills: Vec<String>,
 }
 
-fn main() {
-    for i in 0..=10_000_000 {
-        let json_str ="{\"first_name\": \"sergii\",\"last_name\": \"onufriienko\",\"year\": 2022,\"skills\": [\"node.js\", \"go\", \"rust\", \"aws\", \"k8s\"],\"happy\": true,\"text\": \"heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text\"}";
-        let deserialized: User = serde_json::from_str(&json_str).unwrap();
+fn run() {
+    let mut mem: Vec<User> = vec![];
+    for i in 0..=20_000_000 {
+        mem.push(User {
+            first_name: "sergii".to_string(),
+            last_name: "onufriienko".to_string(),
+            year: i as i64,
+            skills: vec![
+                "node.js".to_string(),
+                "go".to_string(),
+                "rust".to_string(),
+                "aws".to_string(),
+                "k8s".to_string(),
+            ],
+            happy: true,
+            text: "heppy text".to_string(),
+        })
     }
+}
 
-    println!("Done");
-    thread::sleep(time::Duration::from_secs(60));
-    println!("End");
+fn main() {
+    run();
+
+    // println!("Done");
+    // thread::sleep(time::Duration::from_secs(60));
+    // println!("End");
 }

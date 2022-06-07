@@ -25,3 +25,11 @@ cd cli-rust; cargo build --release; cd ../cli-go; go build; cd ..
 | Rust    | 531K     | 480K  | 10.88s |
 | Go      | 2.2M     | 6.5M  | 39.78s |
 | Node.js | -        | 11.3M | 11.92s |
+
+## Step 3: Array of 20M structs
+
+|         | Bin size | Mem            | Time   |
+| ------- | -------- | -------------- | ------ |
+| Rust    | 461K     | 3.3G -> 19.8M  | 13.59s |
+| Go      | 1.1M     | 6.92G          | 16.38s |
+| Node.js | -        | 2.38G -> 19.8M | 2.87s  |

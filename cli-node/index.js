@@ -1,9 +1,15 @@
 function main() {
-  const count = 10_000_000;
+  const count = 20_000_000;
+  let mem = [];
   for (let i = 0; i <= count; i++) {
-    const jsonStr =
-      '{"first_name": "sergii","last_name": "onufriienko","year": 2022,"skills": ["node.js", "go", "rust", "aws", "k8s"],"happy": true,"text": "heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text"}';
-    const jsonObj = JSON.parse(jsonStr);
+    mem.push({
+      first_name: 'sergii',
+      last_name: 'onufriienko',
+      year: i,
+      skills: ['node.js', 'go', 'rust', 'aws', 'k8s'],
+      happy: true,
+      text: 'heppy text',
+    });
   }
 }
 

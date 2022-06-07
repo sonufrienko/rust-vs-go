@@ -1,8 +1,6 @@
 package main
 
-import (
-	"encoding/json"
-)
+import "time"
 
 type User struct {
 	FirstName string   `json:"first_name"`
@@ -13,17 +11,25 @@ type User struct {
 	Skills    []string `json:"skills"`
 }
 
-func main() {
-	for i := 0; i <= 10_000_000; i++ {
-		jsonStr :=
-			"{\"first_name\": \"sergii\",\"last_name\": \"onufriienko\",\"year\": 2022,\"skills\": [\"node.js\", \"go\", \"rust\", \"aws\", \"k8s\"],\"happy\": true,\"text\": \"heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text, heppy text\"}"
-
-		var u User
-		json.Unmarshal([]byte(jsonStr), &u)
+func run() {
+	mem := make([]User, 0)
+	for i := 0; i <= 20_000_000; i++ {
+		mem = append(mem, User{
+			FirstName: "sergii",
+			LastName:  "onufriienko",
+			Year:      int64(i),
+			Skills:    []string{"node.js", "go", "rust", "aws", "k8s"},
+			Happy:     true,
+			Text:      "heppy text",
+		})
 
 	}
+}
 
-	// println("Done")
-	// time.Sleep(60 * time.Second)
-	// println("End")
+func main() {
+	run()
+
+	println("Done")
+	time.Sleep(60 * time.Second)
+	println("End")
 }
